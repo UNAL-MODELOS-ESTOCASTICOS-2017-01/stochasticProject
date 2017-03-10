@@ -1,0 +1,4 @@
+Red con topologia estrella de 11 nodos e IPv6
+
+sudo ./waf --run nombre --vis
+

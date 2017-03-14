@@ -16,7 +16,7 @@
 
 using namespace ns3;
 
-NS_LOG_COMPONENT_DEFINE ("3 nodos");
+NS_LOG_COMPONENT_DEFINE ("star with ipv6");
 
 int main (int argc, char *argv[])
 {
@@ -87,19 +87,19 @@ int main (int argc, char *argv[])
   ipv6.SetBase (Ipv6Address ("2001:5::"), Ipv6Prefix (64));
   Ipv6InterfaceContainer i5 = ipv6.Assign (d5);
 
-  ipv6.SetBase (Ipv6Address ("2001:1::"), Ipv6Prefix (64));
+  ipv6.SetBase (Ipv6Address ("2001:6::"), Ipv6Prefix (64));
   Ipv6InterfaceContainer i6 = ipv6.Assign (d6);
 
-  ipv6.SetBase (Ipv6Address ("2001:2::"), Ipv6Prefix (64));
+  ipv6.SetBase (Ipv6Address ("2001:7::"), Ipv6Prefix (64));
   Ipv6InterfaceContainer i7 = ipv6.Assign (d7);
 
-  ipv6.SetBase (Ipv6Address ("2001:3::"), Ipv6Prefix (64));
+  ipv6.SetBase (Ipv6Address ("2001:8::"), Ipv6Prefix (64));
   Ipv6InterfaceContainer i8 = ipv6.Assign (d8);
 
-  ipv6.SetBase (Ipv6Address ("2001:4::"), Ipv6Prefix (64));
+  ipv6.SetBase (Ipv6Address ("2001:9::"), Ipv6Prefix (64));
   Ipv6InterfaceContainer i9 = ipv6.Assign (d9);
 
-  ipv6.SetBase (Ipv6Address ("2001:5::"), Ipv6Prefix (64));
+  ipv6.SetBase (Ipv6Address ("2001:10::"), Ipv6Prefix (64));
   Ipv6InterfaceContainer i10 = ipv6.Assign (d10);
 
   //Servidor y aplicaciones
@@ -116,6 +116,8 @@ int main (int argc, char *argv[])
   ApplicationContainer apps = ping6.Install (nodes.Get (0));
   apps.Start (Seconds (2.0));
   apps.Stop (Seconds (10.0));
+
+  csma.EnablePcapAll ("starwithipv6", true);
 
   Simulator::Run ();
   Simulator::Destroy ();
